@@ -14,3 +14,6 @@ class DeletedRecord(models.Model):
 
         db_table = "django_deletion_record"
         managed = False
+
+    def __str__(self) -> str:
+        return "(%s, %s)" % (self.table_name, self.object_id)
