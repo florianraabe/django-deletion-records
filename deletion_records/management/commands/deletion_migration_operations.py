@@ -32,7 +32,7 @@ class Command(BaseCommand):
                         AFTER DELETE
                         ON %(table_name)s
                         FOR EACH ROW
-                    EXECUTE FUNCTION deleted_record_insert();
+                    EXECUTE FUNCTION deletion_record_insert();
                     \"\"\",
                     reverse_sql="DROP TRIGGER IF EXISTS deleted_record_insert ON %(table_name)s CASCADE;",
                 )
