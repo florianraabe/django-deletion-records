@@ -1,5 +1,5 @@
 # ruff: noqa: E501, RUF012
-from django.db import migrations
+from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
@@ -41,5 +41,32 @@ class Migration(migrations.Migration):
             $$;
             """,
             reverse_sql="DROP FUNCTION IF EXISTS deletion_record_insert CASCADE;",
+        ),
+        migrations.CreateModel(
+            name="DeletedRecord",
+            fields=[
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("data", models.JSONField(verbose_name="data")),
+                (
+                    "table_name",
+                    models.CharField(max_length=128, verbose_name="table name"),
+                ),
+                ("object_id", models.BigIntegerField(verbose_name="object id")),
+                ("deleted_at", models.DateTimeField(verbose_name="deleted at")),
+            ],
+            options={
+                "verbose_name": "deleted record",
+                "verbose_name_plural": "deleted records",
+                "db_table": "django_deletion_record",
+                "managed": False,
+            },
         ),
     ]
