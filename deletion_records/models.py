@@ -12,8 +12,13 @@ class DeletedRecord(models.Model):
         verbose_name = _("deleted record")
         verbose_name_plural = _("deleted records")
 
+        indexes = [
+            models.Index(
+                fields=["object_id", "table_name"],
+                name="deletion_obj_idx",
+            )
+        ]
         db_table = "django_deletion_record"
-        managed = False
 
     def __str__(self) -> str:
         return "(%s, %s)" % (self.table_name, self.object_id)
