@@ -7,8 +7,8 @@ packages = ["deletion_records"]
 
 [project]
 name = "django-deletion-records"
-version = "1.0.0"
-description = "" # todo
+version = "0.1.0"
+description = "A Django application to track deleted records."
 readme = "README.md"
 authors = [{ name = "suayip uzulmez", email = "suayip.541@gmail.com" }]
 license = { file = "LICENSE" }
