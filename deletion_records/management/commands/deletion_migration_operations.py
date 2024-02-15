@@ -49,14 +49,3 @@ class Command(BaseCommand):
             model = apps.get_model(name)
             table = model._meta.db_table
             self.stdout.write(self.get_operation(name, table))
-
-        if models:
-            deps = textwrap.dedent(
-                """
-                # Add this only if it is not added in previous migrations.
-                dependencies = [
-                    ("deletion_records", "0001_initial"),
-                ]
-                """
-            )
-            self.stdout.write(deps)
